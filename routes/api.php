@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\GameController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,3 +32,4 @@ Route::group([
     Route::post('register', 'App\Http\Controllers\AuthController@register');
 });
 
+Route::apiResource('games', GameController::class);
