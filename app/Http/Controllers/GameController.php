@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
+
 
 class GameController extends Controller
 {
@@ -14,7 +16,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $games = Game::all();
+        return response()->json($games);
     }
 
     /**
@@ -35,7 +38,13 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $game = new Game;
+        $game->title = $request->title;
+        $game->thumbnail_url = $request->thumbnail_url;
+        $game->description = $request->description;
+        $game->url = $request->url;
+        $game->save();
+        return response()->json($game);
     }
 
     /**
@@ -44,9 +53,10 @@ class GameController extends Controller
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show($id)
     {
-        //
+        $game = Game::find($id);
+        return response()->json($game);
     }
 
     /**
@@ -67,9 +77,15 @@ class GameController extends Controller
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, $id)
     {
-        //
+        $game = Game::find($id);
+        $game->title = $request->title;
+        $game->thumbnail_url = $request->thumbnail_url;
+        $game->description = $request->description;
+        $game->url = $request->url;
+        $game->save();
+        return response()->json($game);
     }
 
     /**
@@ -78,8 +94,10 @@ class GameController extends Controller
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $game)
+    public function destroy($id)
     {
-        //
+        $game = Game::find($id);
+        $game->delete();
+        return response()->json($game);
     }
 }
