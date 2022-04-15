@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\PartyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,4 @@ Route::group([
 });
 
 Route::apiResource('games', GameController::class);
+Route::apiResource('parties', PartyController::class);
