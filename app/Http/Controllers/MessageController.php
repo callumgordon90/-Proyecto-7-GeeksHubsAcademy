@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -14,7 +15,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+        return response()->json($messages);
     }
 
     /**
@@ -35,7 +37,12 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = new Message;
+        $message->user_id = auth()->user()->id;
+        $message->party_id = $request->party_id;
+        $message->message = $request->message;
+        $message->save();
+        return response()->json($message);
     }
 
     /**
@@ -44,9 +51,10 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show($id)
     {
-        //
+        $message = Message::find($id);
+        return response()->json($message);
     }
 
     /**
@@ -67,9 +75,13 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, $id)
     {
-        //
+        $userId = auth()->user()->id;
+        $message = Message::where('user_id', $userId)->findOrFail($id);
+        $message->message = $request->message;
+        $message->save();
+        return response()->json($message);
     }
 
     /**
@@ -78,8 +90,30 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy($id)
     {
-        //
+        $userId = auth()->user()->id;
+        $message = Message::where('user_id', $userId)->findOrFail($id);
+        $message->delete();
+        return response()->json($message);
+    }
+
+    /**
+     * Display the resources that are in the specified party_id.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+     
+    public function getByParty($id)
+    {
+        $messages = DB::table('messages')
+            ->join('users', 'messages.user_id', '=', 'users.id')
+            ->select('messages.id', 'messages.message', 'messages.updated_at', 'users.name as user_name')
+            ->where('messages.party_id', $id)
+            ->get();
+
+        return response()->json($messages);
     }
 }
