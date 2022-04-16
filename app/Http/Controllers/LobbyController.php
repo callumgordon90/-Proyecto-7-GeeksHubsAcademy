@@ -14,7 +14,8 @@ class LobbyController extends Controller
      */
     public function index()
     {
-        //
+        $people = Lobby::all();
+        return response()->json($people);
     }
 
     /**
@@ -33,9 +34,22 @@ class LobbyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
+        $person = Lobby::where([
+            ['user_id', '=', $request->user_id],
+            ['party_id', '=', $request->party_id],
+        ])->first();
+        if ($person != null) {
+            return response()->json(['message' => 'This person is already in the Lobby!'], 400);
+        } else {
+            $person = new Lobby;
+            $person->user_id = $request->user_id;
+            $person->party_id = $request->party_id;
+            $person->save();
+            return response()->json($person);
+        }
     }
 
     /**
@@ -44,9 +58,10 @@ class LobbyController extends Controller
      * @param  \App\Models\Lobby  $lobby
      * @return \Illuminate\Http\Response
      */
-    public function show(Lobby $lobby)
+    public function show($id)
     {
-        //
+        $person = Lobby::find($id);
+        return response()->json($person);
     }
 
     /**
@@ -78,8 +93,10 @@ class LobbyController extends Controller
      * @param  \App\Models\Lobby  $lobby
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lobby $lobby)
+    public function destroy($id)
     {
-        //
+        $person = Lobby::find($id);
+        $person->delete();
+        return response()->json($person);
     }
 }

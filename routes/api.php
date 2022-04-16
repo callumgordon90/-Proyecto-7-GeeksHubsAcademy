@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\LobbyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,4 @@ Route::group([
 Route::apiResource('games', GameController::class);
 Route::apiResource('parties', PartyController::class);
 Route::apiResource('messages', MessageController::class);
+Route::apiResource('lobbies', LobbyController::class)->except(['update']);
