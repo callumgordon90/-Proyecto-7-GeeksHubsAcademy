@@ -14,7 +14,7 @@
 ***
 # Summary of the project:
 
-For this project we were tasked with creating a full functioning backend (Rest API with full CRUD functionality, connecting to a database).
+For this project we were tasked with creating a fully functioning backend (Rest API with full CRUD functionality, connecting to a database).
 
 The technologies used for this project were PHP, laraval and MySQL. 
 
