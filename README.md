@@ -27,7 +27,7 @@ _"A company you work for wants to give a boost to the way employees relate to ea
 
 _A first phase of this project is to create an LFG web application, which will allow employees to contact other employees in the company._
 
-_Employees can contact other colleagues to form groups to play videogames, with the aim of sharing after-work leisure time".
+_Employees can contact other colleagues to form groups to play videogames, with the aim of sharing after-work leisure time"._
 
 * * * 
 
