@@ -122,10 +122,10 @@ Users:
 
 http://localhost:8000/api/auth
 
-POST  	register a user 					/register
-POST		login a user 					/login
-POST		logout a user					/logout			(authorisation token required)
-GET		get all users 						/
+POST  	register a user 				/register
+POST	login a user 					/login
+POST	logout a user					/logout			(authorisation token required)
+GET		get all users 					/
 
 http://localhost:8000/api/users
 
