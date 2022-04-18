@@ -122,59 +122,59 @@ Users:
 
 http://localhost:8000/api/auth
 
-POST  	register a user 				/register
-POST	login a user 					/login
-POST	logout a user					/logout			(authorisation token required)
-GET		get all users 					/
+POST    register a user /register
+POST    login a user    /login
+POST    logout a user   /logout			(authorisation token required)
+GET get all users   /
 
 http://localhost:8000/api/users
 
-GET		return user with specific id		/:id<integer>	
-PUT		change user with specific id		/:id<integer>	
-DELETE	delete user with specific id		/:id<integer>	
+GET return user with specific id    /:id<integer>	
+PUT change user with specific id    /:id<integer>	
+DELETE  delete user with specific id    /:id<integer>	
 
 Games:
 
 http://localhost:8000/api/games
 
-POST	create new game						/	
-GET		return all games					/	
-GET		return game with specific id		/:id<integer>	
-GET		return parties from game with specific id 	/:id<integer>/parties	(with authorisation)
-PUT		change game with specific id		/:id<integer>	
-DELETE	delete game with specified id		/:id<integer>	
+POST    create new game /	
+GET return all games    /	
+GET return game with specific id    /:id<integer>	
+GET return parties from game with specific id   /:id<integer>/parties	(with authorisation)
+PUT change game with specific id    /:id<integer>	
+DELETE  delete game with specified id   /:id<integer>	
 
 
 Parties:
 
 http://localhost:8000/api/parties
 
-POST	reate new party						/	
-GET		return all parties					/	
-GET		return party with specified id		/:id<integer>	
-GET		return messages from party with specified id	/:id<integer>/messages	(with authorisation)
-PUT		change party with specified id		/:id<integer>	
-DELETE	delete party with specified id		/:id<integer>	
+POST    create new party    /	
+GET return all parties  /	
+GET return party with specified id  /:id<integer>	
+GET return messages from party with specified id    /:id<integer>/messages	(with authorisation)
+PUT change party with specified id  /:id<integer>	
+DELETE  delete party with specified id  /:id<integer>	
 
 
 Messages:
 
 http://localhost:8000/api/messages
 
-POST	create new message			    	/	
-GET		return all messages					/	
-GET		return message with specified id	/:id<integer>	
-PUT		change message with specified id	/:id<integer>	
-DELETE	delete message with specified id	/:id<integer>
+POST    create new message  /	
+GET return all messages /	
+GET return message with specified id    /:id<integer>	
+PUT change message with specified id    /:id<integer>	
+DELETE  delete message with specified id    /:id<integer>
 
 Lobbies:
 
 http://localhost:8000/api/member
 
-POST	create new member					/	
-GET		return all members					/	
-GET		return member with specified id		/:id<integer>
-DELETE	delete member with specified id		/:id<integer>
+POST create new member  /	
+GET return all members  /	
+GET return member with specified id /:id<integer>
+DELETE  delete member with specified id /:id<integer>
 
 ```
 
