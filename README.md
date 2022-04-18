@@ -118,31 +118,63 @@ Now you will be able to run the API.
 # ENDPOINTS OF MY PROJECT: 
 ### Endpoints of my project can be found in:
 ```
-app > routes >api.php 
-```
-***
+Users:
 
-```
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+http://localhost:8000/api/auth
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
+POST  	register a user 					/register
+POST		login a user 					/login
+POST		logout a user					/logout			(authorisation token required)
+GET		get all users 						/
 
-], function ($router) {
-    Route::post('login', 'App\Http\Controllers\AuthController@login');
-    Route::post('logout', 'App\Http\Controllers\AuthController@logout');
-    Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
-    Route::post('me', 'App\Http\Controllers\AuthController@me');
-    Route::post('register', 'App\Http\Controllers\AuthController@register');
-});
+http://localhost:8000/api/users
 
-Route::apiResource('games', GameController::class);
-Route::apiResource('parties', PartyController::class);
-Route::apiResource('messages', MessageController::class);
-Route::apiResource('lobbies', LobbyController::class)->except(['update']);
+GET		return user with specific id		/:id<integer>	
+PUT		change user with specific id		/:id<integer>	
+DELETE	delete user with specific id		/:id<integer>	
+
+Games:
+
+http://localhost:8000/api/games
+
+POST	create new game						/	
+GET		return all games					/	
+GET		return game with specific id		/:id<integer>	
+GET		return parties from game with specific id 	/:id<integer>/parties	(with authorisation)
+PUT		change game with specific id		/:id<integer>	
+DELETE	delete game with specified id		/:id<integer>	
+
+
+Parties:
+
+http://localhost:8000/api/parties
+
+POST	reate new party						/	
+GET		return all parties					/	
+GET		return party with specified id		/:id<integer>	
+GET		return messages from party with specified id	/:id<integer>/messages	(with authorisation)
+PUT		change party with specified id		/:id<integer>	
+DELETE	delete party with specified id		/:id<integer>	
+
+
+Messages:
+
+http://localhost:8000/api/messages
+
+POST	create new message			    	/	
+GET		return all messages					/	
+GET		return message with specified id	/:id<integer>	
+PUT		change message with specified id	/:id<integer>	
+DELETE	delete message with specified id	/:id<integer>
+
+Lobbies:
+
+http://localhost:8000/api/member
+
+POST	create new member					/	
+GET		return all members					/	
+GET		return member with specified id		/:id<integer>
+DELETE	delete member with specified id		/:id<integer>
 
 ```
 

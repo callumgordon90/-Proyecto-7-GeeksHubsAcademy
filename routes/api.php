@@ -19,6 +19,9 @@ use App\Http\Controllers\LobbyController;
 |
 */
 
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -35,7 +38,7 @@ Route::group([
     Route::post('register', 'App\Http\Controllers\AuthController@register');
 });
 
-Route::apiResource('games', GameController::class);
+Route::apiResource("games", GameController::class);
 Route::apiResource('parties', PartyController::class);
 Route::apiResource('messages', MessageController::class);
 Route::apiResource('lobbies', LobbyController::class)->except(['update']);

@@ -9,11 +9,18 @@ class Game extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'thumbnail_url', 'description', 'url'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
 
-
-
-    
+    protected $fillable = [
+        'title',
+        'thumbnail_url',
+        'description',
+        'url',
+    ];
 
     public function parties()
     {
